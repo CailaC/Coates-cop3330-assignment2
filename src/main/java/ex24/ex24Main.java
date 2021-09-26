@@ -3,7 +3,7 @@ package ex24;
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class Main {
+public class ex24Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
