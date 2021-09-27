@@ -1,3 +1,7 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 2 Solution
+ *  Copyright 2021 Caila Coates
+ */
 package ex25;
 
 import java.util.Scanner;
@@ -8,20 +12,42 @@ public class ex25Main {
         System.out.println("Enter password to check password strength: ");
         String password = input.next();
 
-        System.out.println(password + ": " + calculatePasswordStrength(password));
+        calculatePasswordStrength(password);
     }
 
 
-    public static boolean calculatePasswordStrength(String password) {
+    public static void calculatePasswordStrength(String password) {
+        int symbols = 0;
+        int digits = 0;
+        int letters = 0;
+        String result = "The password ' " + password + "' is a ";
 
-        if(password.length() > 8) {
-            for (char c : password.toCharArray()) {
-                if (!Character.isDigit(c)) {
-                    return false;
-                }
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isDigit(password.charAt(i))) {
+                digits++;
+            } else if (Character.isLetter(password.charAt(i))) {
+                letters++;
+            } else {
+                symbols++;
             }
         }
-        return true;
-    }
 
+        if (password.length() < 8) {
+            if (digits == password.length()) {
+                result += "very weak password.";
+            } else if (letters == password.length()) {
+                result += "weak password.";
+            }
+        } else {
+
+            if (letters != 0 && digits != 0 && symbols != 0) {
+                result += "very strong password.";
+            } else if (letters != 0 && digits != 0) {
+                result += "strong password.";
+
+            }
+        }
+        System.out.println(result);
+
+    }
 }
