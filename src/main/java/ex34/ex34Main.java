@@ -4,6 +4,9 @@
  */
 package ex34;
 
+//import com.sun.tools.javac.util.ArrayUtils;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ex34Main {
@@ -16,42 +19,35 @@ public class ex34Main {
 
     public static void employeeList(){
         Scanner input = new Scanner(System.in);
-        String[] employeeArray = {"Caila Coates", "Amanda Smith", "Tyler Johnson", "Tim Cooke", "Mia Allen"};
-/*
-        int arrayLength = employeeArray.length;
+        ArrayList<String> employeeArray = new ArrayList<String>();
+        employeeArray.add("Caila Coates");
+        employeeArray.add("Amanda Smith");
+        employeeArray.add("Tyler Jones");
+        employeeArray.add("Mia Allen");
+        employeeArray.add("Tim Cooke");
+        //String[] employeeArray = {"Caila Coates", "Amanda Smith", "Tyler Johnson", "Tim Cooke", "Mia Allen"};
 
-        System.out.println("There are " + arrayLength + " employees:");
-        for(int i = 0; i < arrayLength; i++){
-            System.out.println(employeeArray[i]);
-        }
-
-*/
         printList(employeeArray);
 
         System.out.println("\nEnter an employee name to remove: ");
         String employeeRemoved = input.nextLine();
 
 
-        for (int i = 0; i < employeeArray.length; i++) {
-            if (employeeArray[i].equals(employeeRemoved)) {
-                //employeeArray[i] = null;
-                myArrayList.remove(stringToRemove);
-                break;
-            }
-        }
+      employeeArray.remove(employeeRemoved);
 
-        printList(employeeArray);
+      System.out.println("");
+      printList(employeeArray);
 
     }
 
-    public static void printList(String[] arr){
+    public static void printList(ArrayList<String> employeeArray){
         Scanner input = new Scanner(System.in);
 
-        int arrayLength = arr.length;
+        int arrayLength = employeeArray.size();
 
         System.out.println("There are " + arrayLength + " employees:");
         for(int i = 0; i < arrayLength; i++){
-            System.out.println(arr[i]);
+            System.out.println(employeeArray.get(i));
         }
     }
 }
