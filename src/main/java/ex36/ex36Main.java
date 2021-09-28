@@ -13,7 +13,8 @@ public class ex36Main {
         Scanner input = new Scanner(System.in);
         ArrayList<Double> numArr = new ArrayList<>();
 
-        double number;
+        double avg, max, min, std, number;
+
         while (true) {
             System.out.println("Enter a number: ");
             String done;
@@ -42,10 +43,17 @@ public class ex36Main {
             }
         }
 
-        average(numArr);
-        max(numArr);
-        min(numArr);
-        std(numArr);
+        avg = average(numArr);
+        printAvg(avg);
+
+        max = max(numArr);
+        printMax(max);
+
+        min = min(numArr);
+        printMin(min);
+
+        std = std(numArr);
+        printStd(std);
 
         }
 
@@ -58,13 +66,13 @@ public class ex36Main {
             sum = sum + aDouble;
         }
         avg = sum / numArray.size();
-        System.out.println("The average is " + avg);
+        //System.out.println("The average is " + avg);
 
-        return sum;
+        return avg;
     }
 
 
-    public static void max(ArrayList<Double> numArray){
+    public static double max(ArrayList<Double> numArray){
         Double max = 0.0;
 
         for (int i =0; i < numArray.size(); i++) {
@@ -75,11 +83,12 @@ public class ex36Main {
 
         }
 
-        System.out.println("The max is " + max);
+        //System.out.println("The max is " +
+        return max;
 
     }
 
-    public static void min(ArrayList<Double> numArray){
+    public static double min(ArrayList<Double> numArray){
         Double min = numArray.get(1);
 
         for (int i =0; i < numArray.size(); i++) {
@@ -90,11 +99,12 @@ public class ex36Main {
 
         }
 
-        System.out.println("The min is " + min);
+        //System.out.println("The min is " + min);
+        return min;
 
     }
 
-    public static void std(ArrayList<Double> numArray){
+    public static double std(ArrayList<Double> numArray){
         double avg = average(numArray);
         double std = 0;
 
@@ -102,10 +112,29 @@ public class ex36Main {
         {
             std = std + Math.pow((numArray.get(i) - avg), 2);
         }
-        std = Math.sqrt(std / numArray.size());
+        return Math.sqrt(std / numArray.size());
 
-        System.out.println("The std is: " + std);
+        //System.out.println("The std is: " + std);
     }
 
+    public static void printAvg(double average)
+    {
+        System.out.println("The average is " + average);
+    }
+
+    public static void printMin(double min)
+    {
+        System.out.println("The minimum is " + min);
+    }
+
+    public static void printMax(double max)
+    {
+        System.out.println("The maximum is " + max);
+    }
+
+    public static void printStd(double std)
+    {
+        System.out.printf("The Standard Deviation is: %.2f", std);
+    }
 
 }
